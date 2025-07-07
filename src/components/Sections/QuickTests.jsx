@@ -612,29 +612,28 @@ export function QuickTests() {
   return (
     <AnimatedBackground variant="dots" className="min-h-screen">
       <div className="space-y-8 animate-slide-up">
-        {/* Header Principal */}
+        {/* Header melhorado */}
         <div className="text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
-                <Zap className="h-7 w-7 text-white" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-pulse" />
+            <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg">
+              <Zap className="h-8 w-8 text-orange-600 dark:text-orange-400" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gradient">
-              Testes Rápidos
-            </h1>
+            <div>
+              <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+                Testes Rápidos
+              </h1>
+            </div>
           </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Teste seus conhecimentos, acompanhe seu progresso e prepare-se para os desafios com nossa plataforma inteligente
+            Teste seus conhecimentos, acompanhe seu progresso e prepare-se para os desafios com nossa plataforma inteligente.
           </p>
         </div>
 
-        {/* Seção de Início Rápido */}
-        <GradientCard variant="rainbow" className="max-w-4xl mx-auto group">
+        {/* Seção de Início Rápido melhorada */}
+        <Card className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 border-orange-200 dark:border-orange-800">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl flex items-center justify-center gap-2">
-              <Brain className="h-6 w-6 text-orange-600" />
+            <CardTitle className="flex items-center justify-center gap-2 text-orange-700 dark:text-orange-300">
+              <Brain className="h-6 w-6" />
               Centro de Comando
             </CardTitle>
             <CardDescription className="text-base">
@@ -645,7 +644,7 @@ export function QuickTests() {
           <CardContent className="text-center">
             <Dialog open={showConfigModal} onOpenChange={setShowConfigModal}>
               <DialogTrigger asChild>
-                <Button className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-lg px-8 py-6 h-auto hover-lift animate-pulse-glow">
+                <Button className="bg-orange-600 hover:bg-orange-700 text-white text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-200">
                   <Play className="h-6 w-6 mr-3" />
                   Iniciar Novo Teste
                   <Zap className="h-5 w-5 ml-3" />
@@ -797,7 +796,7 @@ export function QuickTests() {
               </DialogContent>
             </Dialog>
           </CardContent>
-        </GradientCard>
+        </Card>
 
         {/* Estatísticas Gerais */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

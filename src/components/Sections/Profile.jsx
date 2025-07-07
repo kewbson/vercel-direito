@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { User, Save, X, Edit, Camera, Mail, Calendar, BookOpen, Moon, Sun } from 'lucide-react'
+import { User, Save, X, Edit, Camera, Mail, Calendar, BookOpen, Moon, Sun, Settings } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -172,30 +172,44 @@ export function Profile() {
 
   return (
     <div className="space-y-6">
-      <div className="text-center mb-8">
+      {/* Header melhorado */}
+      <div className="text-center">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <User className="h-8 w-8 text-orange-600 dark:text-orange-400" />
-          <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">Meu Perfil</h1>
+          <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg">
+            <User className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+              Meu Perfil
+            </h1>
+          </div>
         </div>
-        <p className="text-muted-foreground text-lg">Gerencie suas informações e preferências</p>
+        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Gerencie suas informações pessoais, preferências e acompanhe suas estatísticas de estudo.
+        </p>
         {!isEditing && (
-          <Button 
-            onClick={() => setIsEditing(true)}
-            className="bg-primary hover:bg-primary/90 mt-4"
-          >
-            <Edit className="h-4 w-4 mr-2" />
-            Editar
-          </Button>
+          <div className="mt-6">
+            <Button 
+              onClick={() => setIsEditing(true)}
+              className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
+            >
+              <Edit className="h-4 w-4 mr-2" />
+              Editar Perfil
+            </Button>
+          </div>
         )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Personal Information */}
         <div className="space-y-6">
-          <Card className="bg-card border-border">
+          <Card className="border-l-4 border-l-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20">
             <CardHeader>
-              <CardTitle className="text-card-foreground">Informações Pessoais</CardTitle>
-              <CardDescription className="text-muted-foreground">
+              <CardTitle className="flex items-center text-orange-700 dark:text-orange-300">
+                <User className="h-5 w-5 mr-2" />
+                Informações Pessoais
+              </CardTitle>
+              <CardDescription>
                 Suas informações básicas na plataforma
               </CardDescription>
             </CardHeader>
@@ -296,14 +310,14 @@ export function Profile() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
+              {/* Action Buttons melhorados */}
               {isEditing && (
                 <div className="flex space-x-2 pt-4">
-                  <Button onClick={handleSave} className="bg-primary hover:bg-primary/90">
+                  <Button onClick={handleSave} className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
                     <Save className="h-4 w-4 mr-2" />
                     Salvar
                   </Button>
-                  <Button onClick={handleCancel} variant="outline">
+                  <Button onClick={handleCancel} variant="outline" className="bg-white dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-orange-900/20">
                     <X className="h-4 w-4 mr-2" />
                     Cancelar
                   </Button>
@@ -312,11 +326,14 @@ export function Profile() {
             </CardContent>
           </Card>
 
-          {/* Preferences */}
-          <Card className="bg-card border-border">
+          {/* Preferences melhoradas */}
+          <Card className="border-l-4 border-l-blue-500 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20">
             <CardHeader>
-              <CardTitle className="text-card-foreground">Preferências</CardTitle>
-              <CardDescription className="text-muted-foreground">
+              <CardTitle className="flex items-center text-blue-700 dark:text-blue-300">
+                <Settings className="h-5 w-5 mr-2" />
+                Preferências
+              </CardTitle>
+              <CardDescription>
                 Configure como você quer usar a plataforma
               </CardDescription>
             </CardHeader>

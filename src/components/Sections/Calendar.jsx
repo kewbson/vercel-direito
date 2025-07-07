@@ -416,27 +416,35 @@ export function Calendar() {
   return (
     <AnimatedBackground variant="grid" className="min-h-screen">
       <div className="space-y-8 animate-slide-up">
-        {/* Header Moderno */}
+        {/* Header melhorado */}
         <div className="text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg">
-                <CalendarIcon className="h-7 w-7 text-white" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse" />
+            <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg">
+              <CalendarIcon className="h-8 w-8 text-orange-600 dark:text-orange-400" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gradient">
-              Agenda Inteligente
-            </h1>
+            <div>
+              <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+                Agenda
+              </h1>
+            </div>
           </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Organize suas aulas, provas e prazos com nossa agenda moderna e intuitiva
+            Organize suas aulas, provas e prazos com nossa agenda moderna e intuitiva. Mantenha-se sempre organizado.
           </p>
         </div>
 
-        {/* Controles e Filtros */}
-        <GradientCard variant="rainbow" className="max-w-6xl mx-auto">
-          <CardContent className="p-6">
+        {/* Controles e Filtros melhorados */}
+        <Card className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 border-orange-200 dark:border-orange-800">
+          <CardHeader>
+            <CardTitle className="flex items-center text-orange-700 dark:text-orange-300">
+              <Filter className="h-5 w-5 mr-2" />
+              Controles e Filtros
+            </CardTitle>
+            <CardDescription>
+              Personalize a visualização da sua agenda
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
             <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
               {/* Controles de Visualização */}
               <div className="flex items-center gap-2">
@@ -486,7 +494,7 @@ export function Calendar() {
 
                 <Button 
                   onClick={handleOpenNewEventDialog}
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 hover-lift"
+                  className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Novo Evento
@@ -494,7 +502,7 @@ export function Calendar() {
               </div>
             </div>
           </CardContent>
-        </GradientCard>
+        </Card>
 
         {/* Estatísticas Rápidas */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 max-w-6xl mx-auto">

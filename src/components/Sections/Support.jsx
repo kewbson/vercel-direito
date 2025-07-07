@@ -156,34 +156,32 @@ export function Support() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {/* Header melhorado */}
+      <div className="text-center">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg">
+            <HelpCircle className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+              Suporte e Feedback
+            </h1>
+          </div>
+        </div>
+        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Encontrou algum problema ou tem sugestões? Estamos aqui para ajudar! Entre em contato conosco.
+        </p>
+      </div>
 
-<div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
-  <div>
-    {/* Ícone + Título */}
-    <div className="flex items-center justify-center gap-3">
-      <HelpCircle className="h-8 w-8 text-orange-600 dark:text-orange-400" />
-      <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
-        Suporte e Feedback
-      </h1>
-    </div>
-
-    {/* Descrição */}
-    <p className="text-muted-foreground text-lg text-center mt-2">
-      Encontrou algum problema ou tem sugestões? Estamos aqui para ajudar!
-    </p>
-  </div>
-</div>
-
-      {/* Success Message */}
+      {/* Success Message melhorada */}
       {showSuccess && (
-        <Card className="border-green-200 bg-green-50">
+        <Card className="border-l-4 border-l-green-500 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20">
           <CardContent className="p-4">
-            <div className="flex items-center space-x-2 text-green-800">
+            <div className="flex items-center space-x-2 text-green-700 dark:text-green-300">
               <CheckCircle className="h-5 w-5" />
               <span className="font-medium">Mensagem enviada com sucesso!</span>
             </div>
-            <p className="text-green-700 text-sm mt-1">
+            <p className="text-green-600 dark:text-green-400 text-sm mt-1">
               Recebemos sua mensagem e responderemos em breve.
             </p>
           </CardContent>
@@ -193,9 +191,12 @@ export function Support() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Formulário de Contato */}
         <div className="space-y-6">
-          <Card>
+          <Card className="border-l-4 border-l-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20">
             <CardHeader>
-              <CardTitle>Entre em Contato</CardTitle>
+              <CardTitle className="flex items-center text-orange-700 dark:text-orange-300">
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Entre em Contato
+              </CardTitle>
               <CardDescription>
                 Descreva sua dúvida, problema ou sugestão
               </CardDescription>
@@ -271,7 +272,7 @@ export function Support() {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-amber-600 hover:bg-amber-700"
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
                 >
                   {isSubmitting ? (
                     <>

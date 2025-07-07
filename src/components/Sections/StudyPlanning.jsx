@@ -332,7 +332,7 @@ export function StudyPlanning() {
       <div className="text-center">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg">
-            <CalendarDays className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+            <Target className="h-8 w-8 text-orange-600 dark:text-orange-400" />
           </div>
           <div>
             <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
@@ -341,62 +341,72 @@ export function StudyPlanning() {
           </div>
         </div>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Organize seus estudos, defina metas e acompanhe seu progresso de forma inteligente.
-          Agora com templates, filtros avançados e metas personalizadas.
+          Organize seus estudos, defina metas e acompanhe seu progresso de forma inteligente. Crie planos estruturados e alcance seus objetivos.
         </p>
       </div>
 
-      {/* Barra de ações */}
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        <div className="flex items-center gap-2 flex-wrap">
-          <Button 
-            onClick={() => setIsCreating(true)}
-            className="bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700">
-            <Plus className="h-4 w-4 mr-2" />
-            Novo Plano
-          </Button>
-          
-          <Button 
-            variant="outline"
-            onClick={() => setShowTemplates(true)}
-            className="flex items-center gap-2">
-            <FileText className="h-4 w-4" />
-            Templates
-          </Button>
-
-          <Button 
-            variant="outline"
-            onClick={() => setShowGoals(!showGoals)}
-            className="flex items-center gap-2">
-            <Trophy className="h-4 w-4" />
-            Metas
-            {goals.currentWeekHours > 0 && (
-              <Badge variant="secondary" className="ml-1 text-xs">
-                {goals.currentWeekHours}h
-              </Badge>
-            )}
-          </Button>
-        </div>
-
-        {/* Filtros e busca */}
-        <div className="flex items-center gap-2 flex-wrap">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Buscar planos..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 w-48"
-            />
-          </div>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="flex items-center gap-2">
-                <Filter className="h-4 w-4" />
-                Filtros
+      {/* Barra de ações melhorada */}
+      <Card className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 border-orange-200 dark:border-orange-800">
+        <CardHeader>
+          <CardTitle className="flex items-center text-orange-700 dark:text-orange-300">
+            <Target className="h-5 w-5 mr-2" />
+            Ações Rápidas
+          </CardTitle>
+          <CardDescription>
+            Crie novos planos ou gerencie suas metas de estudo
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+            <div className="flex items-center gap-2 flex-wrap">
+              <Button 
+                onClick={() => setIsCreating(true)}
+                className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+                <Plus className="h-4 w-4 mr-2" />
+                Novo Plano
               </Button>
-            </DropdownMenuTrigger>
+              
+              <Button 
+                variant="outline"
+                onClick={() => setShowTemplates(true)}
+                className="bg-white dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-orange-900/20 flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Templates
+              </Button>
+
+              <Button 
+                variant="outline"
+                onClick={() => setShowGoals(!showGoals)}
+                className="bg-white dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-orange-900/20 flex items-center gap-2">
+                <Trophy className="h-4 w-4" />
+                Metas
+                {goals.currentWeekHours > 0 && (
+                  <Badge variant="secondary" className="ml-1 text-xs">
+                    {goals.currentWeekHours}h
+                  </Badge>
+                )}
+              </Button>
+            </div>
+
+            {/* Filtros e busca */}
+            <div className="flex items-center gap-2 flex-wrap">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input
+                  placeholder="Buscar planos..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 w-48 bg-white dark:bg-gray-800"
+                />
+              </div>
+
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="bg-white dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-orange-900/20 flex items-center gap-2">
+                    <Filter className="h-4 w-4" />
+                    Filtros
+                  </Button>
+                </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
               <div className="p-2">
                 <Label className="text-xs font-medium">Status</Label>
@@ -447,6 +457,8 @@ export function StudyPlanning() {
           </DropdownMenu>
         </div>
       </div>
+    </CardContent>
+  </Card>
 
       {/* Modal de Templates */}
       {showTemplates && (

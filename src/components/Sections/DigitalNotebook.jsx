@@ -146,79 +146,92 @@ const handleCancel = () => {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {/* Header melhorado */}
+      <div className="text-center">
+        <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg">
+            <BookOpen className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+          </div>
           <div>
-<div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
-  <div>
-    {/* Ícone + Título */}
-    <div className="flex items-center justify-center gap-3">
-      <BookOpen className="h-8 w-8 text-orange-600 dark:text-orange-400" />
-      <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
-        Caderno Digital
-      </h1>
-    </div>
-
-    {/* Descrição */}
-    <p className="text-muted-foreground text-lg text-center mt-2">
-      Suas anotações de estudo organizadas por matéria
-    </p>
-  </div>
-</div>
-      <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-4">
-                  <Button 
-          onClick={() => setIsCreating(true)}
-          className="bg-primary hover:bg-primary/90 mt-4">
-          <Plus className="h-4 w-4 mr-2" />
-          Nova Anotação
-        </Button>
-      </div>
-        </div>
-      {/* Filtros */}
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex-1">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-            <Input
-              placeholder="Buscar anotações..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10"
-            />
+            <h1 className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+              Caderno Digital
+            </h1>
           </div>
         </div>
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
-            <Filter className="h-4 w-4 text-gray-400" />
-            <select
-              value={selectedSubject}
-              onChange={(e) => setSelectedSubject(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200"
-            >
-              <option value="all">Todas as matérias</option>
-              {subjects.map(subject => (
-                <option key={subject} value={subject}>{subject}</option>
-              ))}
-            </select>
-          </div>
-          <Button
-            variant={showFavoritesOnly ? "default" : "outline"}
-            size="sm"
-            onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
-            className={showFavoritesOnly ? "bg-yellow-500 hover:bg-yellow-600 text-white" : ""}
-          >
-            <Star className={`h-4 w-4 mr-2 ${showFavoritesOnly ? 'fill-current' : ''}`} />
-            {showFavoritesOnly ? 'Mostrando Favoritos' : 'Mostrar Favoritos'}
+        <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          Suas anotações de estudo organizadas por matéria. Crie, edite e organize seu conhecimento de forma eficiente.
+        </p>
+        <div className="mt-6">
+          <Button 
+            onClick={() => setIsCreating(true)}
+            className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+            <Plus className="h-4 w-4 mr-2" />
+            Nova Anotação
           </Button>
         </div>
       </div>
+      {/* Filtros melhorados */}
+      <Card className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20 border-orange-200 dark:border-orange-800">
+        <CardHeader>
+          <CardTitle className="flex items-center text-orange-700 dark:text-orange-300">
+            <Filter className="h-5 w-5 mr-2" />
+            Filtros e Busca
+          </CardTitle>
+          <CardDescription>
+            Encontre rapidamente suas anotações
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Input
+                  placeholder="Buscar anotações..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10 bg-white dark:bg-gray-800"
+                />
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <select
+                  value={selectedSubject}
+                  onChange={(e) => setSelectedSubject(e.target.value)}
+                  className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-200 bg-white"
+                >
+                  <option value="all">Todas as matérias</option>
+                  {subjects.map(subject => (
+                    <option key={subject} value={subject}>{subject}</option>
+                  ))}
+                </select>
+              </div>
+              <Button
+                variant={showFavoritesOnly ? "default" : "outline"}
+                size="sm"
+                onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
+                className={showFavoritesOnly ? "bg-yellow-500 hover:bg-yellow-600 text-white" : "bg-white dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-orange-900/20"}
+              >
+                <Star className={`h-4 w-4 mr-2 ${showFavoritesOnly ? 'fill-current' : ''}`} />
+                {showFavoritesOnly ? 'Favoritos' : 'Mostrar Favoritos'}
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Formulário de criação/edição */}
       {isCreating && (
-        <Card>
+        <Card className="border-l-4 border-l-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20">
           <CardHeader>
-            <CardTitle>
+            <CardTitle className="flex items-center text-orange-700 dark:text-orange-300">
+              <Edit className="h-5 w-5 mr-2" />
               {editingId ? 'Editar Anotação' : 'Nova Anotação'}
             </CardTitle>
+            <CardDescription>
+              {editingId ? 'Modifique os dados da sua anotação' : 'Crie uma nova anotação de estudo'}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -231,6 +244,7 @@ const handleCancel = () => {
                     value={formData.title}
                     onChange={handleInputChange}
                     placeholder="Ex: Contratos - Teoria Geral"
+                    className="bg-white dark:bg-gray-800"
                     required
                   />
                 </div>
@@ -242,6 +256,7 @@ const handleCancel = () => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     placeholder="Ex: Direito Civil"
+                    className="bg-white dark:bg-gray-800"
                     required
                   />
                 </div>
@@ -258,10 +273,10 @@ const handleCancel = () => {
                 />
                 </div>
               <div className="flex space-x-2">
-                <Button type="submit" className="bg-amber-600 hover:bg-amber-700">
+                <Button type="submit" className="bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl transition-all duration-200">
                   {editingId ? 'Salvar Alterações' : 'Criar Anotação'}
                 </Button>
-                <Button type="button" variant="outline" onClick={handleCancel}>
+                <Button type="button" variant="outline" onClick={handleCancel} className="bg-white dark:bg-gray-800 hover:bg-orange-50 dark:hover:bg-orange-900/20">
                   Cancelar
                 </Button>
               </div>
@@ -365,37 +380,43 @@ const handleCancel = () => {
         />
       )}
 
-      {/* Estatísticas */}
+      {/* Estatísticas melhoradas */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
+        <Card className="hover:shadow-md transition-all duration-200 border-l-4 border-l-orange-500 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950/20 dark:to-orange-900/20">
           <CardContent className="p-4">
             <div className="flex items-center">
-              <BookOpen className="h-8 w-8 text-amber-600 mr-3" />
+              <div className="p-2 bg-orange-100 dark:bg-orange-900/20 rounded-lg mr-3">
+                <BookOpen className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+              </div>
               <div>
-                <p className="text-sm font-medium text-primary hover:primary/90">Total de Anotações</p>
-                <p className="text-2xl font-bold text-primary hover:primary/90">{notes.length}</p>
+                <p className="text-sm font-medium text-orange-700 dark:text-orange-300">Total de Anotações</p>
+                <p className="text-2xl font-bold text-orange-700 dark:text-orange-300">{notes.length}</p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="hover:shadow-md transition-all duration-200 border-l-4 border-l-blue-500 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/20 dark:to-blue-900/20">
           <CardContent className="p-4">
             <div className="flex items-center">
-              <Filter className="h-8 w-8 text-blue-600 mr-3" />
+              <div className="p-2 bg-blue-100 dark:bg-blue-900/20 rounded-lg mr-3">
+                <Filter className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+              </div>
               <div>
-                <p className="text-sm font-medium text-primary hover:primary/90">Matérias</p>
-                <p className="text-2xl font-bold text-primary hover:primary/90">{subjects.length}</p>
+                <p className="text-sm font-medium text-blue-700 dark:text-blue-300">Matérias</p>
+                <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">{subjects.length}</p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="hover:shadow-md transition-all duration-200 border-l-4 border-l-green-500 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/20 dark:to-green-900/20">
           <CardContent className="p-4">
             <div className="flex items-center">
-              <Search className="h-8 w-8 text-green-600 mr-3" />
+              <div className="p-2 bg-green-100 dark:bg-green-900/20 rounded-lg mr-3">
+                <Search className="h-6 w-6 text-green-600 dark:text-green-400" />
+              </div>
               <div>
-                <p className="text-sm font-medium text-primary hover:primary/90">Resultados</p>
-                <p className="text-2xl font-bold text-primary hover:primary/90">{filteredNotes.length}</p>
+                <p className="text-sm font-medium text-green-700 dark:text-green-300">Resultados</p>
+                <p className="text-2xl font-bold text-green-700 dark:text-green-300">{filteredNotes.length}</p>
               </div>
             </div>
           </CardContent>
